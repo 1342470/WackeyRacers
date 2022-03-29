@@ -9,6 +9,6 @@ package com.mycompany.wackyracers;
  *
  * @author kylej
  */
-public interface VechicleWeapon {
-    public void attack(Engine theTarget);
+public class MidVechicleType {
+    
 }

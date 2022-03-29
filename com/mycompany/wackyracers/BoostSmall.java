@@ -9,6 +9,13 @@ package com.mycompany.wackyracers;
  *
  * @author kylej
  */
-public interface VechicleWeapon {
-    public void attack(Engine theTarget);
+public class BoostSmall implements BoostType {
+
+
+
+    @Override
+    public void boost(Engine theTarget) {
+        theTarget.distance += 2;
+    }
+    
 }
