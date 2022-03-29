@@ -9,6 +9,12 @@ package com.mycompany.wackyracers;
  *
  * @author kylej
  */
-public class NoWeapon {
-    
+public class NoWeapon implements VechicleWeapon {
+
+    @Override
+    public void attack(Engine theTarget) {
+        System.out.println("Your Vechicle is unable to shoot as it doesn't have any Weapons");
+    }
+
+
 }

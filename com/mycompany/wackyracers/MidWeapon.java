@@ -11,6 +11,7 @@ package com.mycompany.wackyracers;
  */
 public class MidWeapon implements VechicleWeapon {
     private int ammo = 3;
+    public static int weight = 4;
 
     @Override
     public void attack(Engine theTarget) {

@@ -16,7 +16,7 @@ public class LargeVechicleType extends Engine {
     }
 
     public int getWeight() {
-        return weight;
+        return weight + BoostLarge.weight + LargeWeapon.weight;
     }
 
     public void setWeight(int weight) {

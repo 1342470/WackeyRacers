@@ -10,12 +10,27 @@ package com.mycompany.wackyracers;
  * @author kylej
  */
 public class BoostLarge implements BoostType{
-
-
+    private int uses = 1;
+    public static int weight = 30;
 
     @Override
     public void boost(Engine theTarget) {
-        theTarget.distance +=7;
+        if(this.uses >=1){
+        theTarget.distance +=30;
+        setUses(-1);
+        }else{System.out.println("you cannot boost as your booster fuel is empty");}
     }
+
+    public int getUses() {
+        return uses;
+    }
+
+    public void setUses(int uses) {
+        this.uses = uses;
+    }
+
+   
+
     
+
 }

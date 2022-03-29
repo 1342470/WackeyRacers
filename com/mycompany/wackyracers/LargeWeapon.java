@@ -11,11 +11,14 @@ package com.mycompany.wackyracers;
  */
 public class LargeWeapon implements VechicleWeapon {
     private int ammo = 1;
+    public static int weight = 6;
 
     @Override
     public void attack(Engine theTarget) {
+        if(this.ammo >=1){
         theTarget.health -= 50;
         setAmmo(-1);
+        }else{System.out.println("you cannot fire your weapon as you are out of ammo");}
     }
 
     public int getAmmo() {

@@ -9,14 +9,14 @@ package com.mycompany.wackyracers;
  *
  * @author kylej
  */
-public class MidVechicleType extends Engine {
-    private int weight = 10;
-    private int speed = 10;
+public class SmallVechicleType extends Engine {
+    private int weight = 5;
+    private int speed = 15;
 
 
-    public MidVechicleType() {
-        boostType = new BoostMid();
-        vechicleWeapon = new MidWeapon();
+    public SmallVechicleType() {
+        boostType = new BoostSmall();
+        vechicleWeapon = new SmallWeapon();
         
     }
 
@@ -25,7 +25,7 @@ public class MidVechicleType extends Engine {
     }
 
     public int getWeight() {
-        return weight + BoostMid.weight + MidWeapon.weight;
+        return weight + BoostSmall.weight + SmallWeapon.weight;
     }
 
     public void setWeight(int weight) {
@@ -33,7 +33,7 @@ public class MidVechicleType extends Engine {
     }
 
     public int getSpeed() {
-        return speed + 100 - getWeight();
+        return speed;
     }
 
     public void setSpeed(int speed) {
