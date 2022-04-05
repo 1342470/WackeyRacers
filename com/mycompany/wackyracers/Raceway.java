@@ -37,19 +37,20 @@ public class Raceway {
         System.out.println("The_Bullet_Proof_Bomb has currently traveled" + The_Bullet_Proof_Bomb.distance + " and is on lap " + The_Bullet_Proof_Bomb.laps);
         System.out.println("The_Arkansas_Chuggabug has currently traveled" + The_Arkansas_Chuggabug.distance + " and is on lap " + The_Arkansas_Chuggabug.laps);
         System.out.println("The_Convert_a_Car has currently traveled" + The_Convert_a_Car.distance + " and is on lap " + The_Convert_a_Car.laps);
-        System.out.println("The_Boudler_moblie has currently traveled" + The_Creepy_Coupe.distance + " and is on lap " + The_Creepy_Coupe.laps);
-        System.out.println("The_Boudler_moblie has currently traveled" + The_Army_surplus_Special.distance + " and is on lap " + The_Army_surplus_Special.laps);
-        System.out.println("The_Boudler_moblie has currently traveled" + The_Buzz_Wagon.distance + " and is on lap " + The_Buzz_Wagon.laps);
+        System.out.println("The_Creepy_Coupe has currently traveled" + The_Creepy_Coupe.distance + " and is on lap " + The_Creepy_Coupe.laps);
+        System.out.println("The_Army_surplus_Special has currently traveled" + The_Army_surplus_Special.distance + " and is on lap " + The_Army_surplus_Special.laps);
+        System.out.println("The_Buzz_Wagon has currently traveled" + The_Buzz_Wagon.distance + " and is on lap " + The_Buzz_Wagon.laps);
         System.out.println("You have currently traveled" + thePlayer.distance + " and are on lap " + thePlayer.laps);
     }
 
     public static void startRace(Engine thePlayer) {
+        thePlayer.display();
+        
         while (thePlayer.laps != 3 || The_Boudler_moblie.laps != 3 || Penelope_Pitstop.laps != 3 || The_Turbo_Terrific.laps != 3 || The_Mean_Machine.laps != 3 || The_Bullet_Proof_Bomb.laps != 3 || The_Arkansas_Chuggabug.laps != 3 || The_Convert_a_Car.laps != 3 || The_Creepy_Coupe.laps != 3 || The_Army_surplus_Special.laps != 3 || The_Buzz_Wagon.laps != 3) {
-            while (thePlayer.distance != 100 || The_Boudler_moblie.distance != 100 || Penelope_Pitstop.distance != 100 || The_Turbo_Terrific.distance != 100 || The_Mean_Machine.distance != 100 || The_Bullet_Proof_Bomb.distance != 100 || The_Arkansas_Chuggabug.distance != 100 || The_Convert_a_Car.distance != 100 || The_Creepy_Coupe.distance != 100 || The_Army_surplus_Special.distance != 100 || The_Buzz_Wagon.distance != 100) {
                 printContests(thePlayer);
                 drive(thePlayer);
                 lapCheck(thePlayer);
-            }
+            
         }
     }
 
@@ -61,7 +62,8 @@ public class Raceway {
             if ("large".equals(vechicle) || "Large".equals(vechicle)) {
                 System.out.println("so you would like the Large Weapon, It has high damage but at the cost of only having one shot make it count: Type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.vechicleWeapon = new LargeWeapon();
                     startRace(thePlayer);
                 } else {
@@ -70,7 +72,8 @@ public class Raceway {
             } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
                 System.out.println("so you would like the mid Weapon,Balanced stats across the board: Type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.vechicleWeapon = new LargeWeapon();
                     startRace(thePlayer);
                 } else {
@@ -79,7 +82,8 @@ public class Raceway {
             } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
                 System.out.println("so you would like the small Weapon, it has low fire power but a high ammo count: Type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.vechicleWeapon = new LargeWeapon();
                     startRace(thePlayer);
                 } else {
@@ -100,33 +104,36 @@ public class Raceway {
             if ("large".equals(vechicle) || "Large".equals(vechicle)) {
                 System.out.println("so you would like the Large booster, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.boostType = new BoostLarge();
                     System.out.println("Great now lets choose your weapon type");
+                    getWeaponType(thePlayer); 
                     correct = "yes";
-                    getWeaponType(thePlayer);
                 } else {
                     correct = "no";
                 }
             } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
                 System.out.println("so you would like the mid vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.boostType = new BoostMid();
                     System.out.println("Great now lets choose your Weapon type");
+                    getWeaponType(thePlayer); 
                     correct = "yes";
-                    getBoosterType(thePlayer);
                 } else {
                     correct = "no";
                 }
             } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
                 System.out.println("so you would like the small booster, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.boostType = new BoostSmall();
                     System.out.println("Great now lets choose your booster type");
+                    getWeaponType(thePlayer); 
                     correct = "yes";
-                    getBoosterType(thePlayer);
                 } else {
                     correct = "no";
                 }
@@ -148,11 +155,12 @@ public class Raceway {
             if ("large".equals(vechicle) || "Large".equals(vechicle)) {
                 System.out.println("so you would like the Large vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     LargeVechicleType player = new LargeVechicleType();
                     System.out.println("Great now lets choose your booster type");
-                    correct = "yes";
                     getBoosterType(player);
+                    correct = "yes";
                 } else {
                     correct = "no";
                 }
@@ -160,11 +168,12 @@ public class Raceway {
             } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
                 System.out.println("so you would like the mid vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     MidVechicleType player = new MidVechicleType();
                     System.out.println("Great now lets choose your booster type");
-                    correct = "yes";
                     getBoosterType(player);
+                    correct = "yes";
                 } else {
                     correct = "no";
                 }
@@ -172,11 +181,12 @@ public class Raceway {
             } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
                 System.out.println("so you would like the small vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
-                if ("yes".equals(theResponse) || "Yes".equals(theResponse)) {
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     SmallVechicleType player = new SmallVechicleType();
                     System.out.println("Great now lets choose your booster type");
-                    correct = "yes";
                     getBoosterType(player);
+                    correct = "yes";
                 } else {
                     correct = "no";
                 }
@@ -191,7 +201,7 @@ public class Raceway {
 
     public static void drive(Engine thePlayer) {
         The_Boudler_moblie.distance += The_Boudler_moblie.getSpeed();
-        Penelope_Pitstop.distance += Penelope_Pitstop.getSpeed();
+        Penelope_Pitstop.distance +=Penelope_Pitstop.getSpeed();
         The_Turbo_Terrific.distance += The_Turbo_Terrific.getSpeed();
         The_Mean_Machine.distance += The_Mean_Machine.getSpeed();
         The_Bullet_Proof_Bomb.distance += The_Bullet_Proof_Bomb.getSpeed();
@@ -203,44 +213,44 @@ public class Raceway {
     }
 
     public static void lapCheck(Engine thePlayer) {
-        if (thePlayer.distance <= 100) {
-            thePlayer.laps = thePlayer.laps + 1;
+        if (thePlayer.distance >= 100) {
+            thePlayer.laps = thePlayer.laps+1;
             thePlayer.distance = 0;
         }
-        if (The_Boudler_moblie.distance <= 100) {
-            The_Boudler_moblie.laps = The_Boudler_moblie.laps + 1;
+        if (The_Boudler_moblie.distance >= 100) {
+            The_Boudler_moblie.laps = The_Boudler_moblie.laps+1;
             The_Boudler_moblie.distance = 0;
         }
-        if (Penelope_Pitstop.distance <= 100) {
-            Penelope_Pitstop.laps = Penelope_Pitstop.laps + 1;
+        if (Penelope_Pitstop.distance >= 100) {
+            Penelope_Pitstop.laps = Penelope_Pitstop.laps+1;
             Penelope_Pitstop.distance = 0;
         }
-        if (The_Turbo_Terrific.distance <= 100) {
-            The_Turbo_Terrific.laps = The_Turbo_Terrific.laps + 1;
+        if (The_Turbo_Terrific.distance >= 100) {
+            The_Turbo_Terrific.laps = The_Turbo_Terrific.laps+1;
             The_Turbo_Terrific.distance = 0;
         }
-        if (The_Mean_Machine.distance <= 100) {
-            The_Mean_Machine.laps = The_Mean_Machine.laps + 1;
+        if (The_Mean_Machine.distance >= 100) {
+            The_Mean_Machine.laps = The_Mean_Machine.laps+1;
             The_Mean_Machine.distance = 0;
         }
-        if (The_Bullet_Proof_Bomb.distance <= 100) {
-            The_Bullet_Proof_Bomb.laps = The_Bullet_Proof_Bomb.laps + 1;
+        if (The_Bullet_Proof_Bomb.distance >= 100) {
+            The_Bullet_Proof_Bomb.laps = The_Bullet_Proof_Bomb.laps+1;
             The_Bullet_Proof_Bomb.distance = 0;
         }
-        if (The_Arkansas_Chuggabug.distance <= 100) {
-            The_Arkansas_Chuggabug.laps = The_Arkansas_Chuggabug.laps + 1;
+        if (The_Arkansas_Chuggabug.distance >= 100) {
+            The_Arkansas_Chuggabug.laps = The_Arkansas_Chuggabug.laps+1;
             The_Arkansas_Chuggabug.distance = 0;
         }
-        if (The_Creepy_Coupe.distance <= 100) {
-            The_Creepy_Coupe.laps = The_Creepy_Coupe.laps + 1;
+        if (The_Creepy_Coupe.distance >= 100) {
+            The_Creepy_Coupe.laps = The_Creepy_Coupe.laps+1;
             The_Creepy_Coupe.distance = 0;
         }
-        if (The_Convert_a_Car.distance <= 100) {
-            The_Convert_a_Car.laps = The_Convert_a_Car.laps + 1;
+        if (The_Convert_a_Car.distance >= 100) {
+            The_Convert_a_Car.laps = The_Convert_a_Car.laps+1;
             The_Convert_a_Car.distance = 0;
         }
-        if (The_Army_surplus_Special.distance <= 100) {
-            The_Army_surplus_Special.laps = The_Army_surplus_Special.laps + 1;
+        if (The_Army_surplus_Special.distance >= 100) {
+            The_Army_surplus_Special.laps = The_Army_surplus_Special.laps+1;
             The_Army_surplus_Special.distance = 0;
         }
 

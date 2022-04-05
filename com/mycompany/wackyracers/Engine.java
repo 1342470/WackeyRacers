@@ -10,6 +10,10 @@ package com.mycompany.wackyracers;
  * @author kylej
  */
 public abstract class Engine {
+    /*
+    may want to include vehcicle type inside engine so in raceway it can access data such as distatnce/ laps etc
+    Vechicle type = vechialtype
+    */
     BoostType boostType;
     VechicleWeapon vechicleWeapon;
     public int distance = 0;
@@ -27,7 +31,9 @@ public abstract class Engine {
     }
 
     abstract void display();
-
+    
+    abstract int getSpeed(); 
+    
     public void boost() {
         boostType.boost(this);
     }
