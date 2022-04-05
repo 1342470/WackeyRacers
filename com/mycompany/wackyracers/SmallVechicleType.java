@@ -33,7 +33,7 @@ public class SmallVechicleType extends Engine {
     }
 
     public int getSpeed() {
-        return speed;
+        return speed + 100 - getWeight();
     }
 
     public void setSpeed(int speed) {
