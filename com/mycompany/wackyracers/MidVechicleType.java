@@ -10,14 +10,24 @@ package com.mycompany.wackyracers;
  * @author kylej
  */
 public class MidVechicleType extends Engine {
+
     private int weight = 10;
     private int speed = 10;
+    private String nameOfDriver;
 
+    public MidVechicleType(String theName) {
+        boostType = new BoostLarge();
+        vechicleWeapon = new LargeWeapon();
+         nameOfDriver = theName ; 
 
-    public MidVechicleType() {
-        boostType = new BoostMid();
-        vechicleWeapon = new MidWeapon();
-        
+    }
+
+    public String getNameOfDriver() {
+        return nameOfDriver;
+    }
+
+    public void setNameOfDriver(String nameOfDriver) {
+        this.nameOfDriver = nameOfDriver;
     }
 
     public void display() {
@@ -40,7 +50,8 @@ public class MidVechicleType extends Engine {
         this.speed = speed;
     }
 
-    
-    
+    void attack(Engine theTarget) {
+        vechicleWeapon.attack(theTarget);
+    }
 
 }
