@@ -19,6 +19,8 @@ public class Raceway {
 
     public static Scanner theName = new Scanner(System.in);
     public static Scanner theShot = new Scanner(System.in);
+    public static Scanner again = new Scanner(System.in);
+    public static Scanner newVechicle = new Scanner(System.in);
     public static String correct = null;
     public static String theBoost;
     public static String theWeapon;
@@ -76,7 +78,7 @@ public class Raceway {
     public static void startRace(Engine thePlayer) {
         thePlayer.display();
         setpower(thePlayer);
-        while (thePlayer.laps <= 3 || The_Boudler_moblie.laps <= 3 || Penelope_Pitstop.laps <= 3 || The_Turbo_Terrific.laps <= 3 || The_Mean_Machine.laps <= 3 || The_Bullet_Proof_Bomb.laps <= 3 || The_Arkansas_Chuggabug.laps <= 3 || The_Convert_a_Car.laps <= 3 || The_Creepy_Coupe.laps <= 3 || The_Army_surplus_Special.laps <= 3 || The_Buzz_Wagon.laps <= 3) {
+        while (thePlayer.laps != 3 || The_Boudler_moblie.laps != 3 || Penelope_Pitstop.laps != 3 || The_Turbo_Terrific.laps != 3 || The_Mean_Machine.laps != 3 || The_Bullet_Proof_Bomb.laps != 3 || The_Arkansas_Chuggabug.laps != 3 || The_Convert_a_Car.laps != 3 || The_Creepy_Coupe.laps != 3 || The_Army_surplus_Special.laps != 3 || The_Buzz_Wagon.laps != 3) {
             printContests(thePlayer);
             drive(thePlayer);
             lapCheck(thePlayer);
@@ -96,6 +98,7 @@ public class Raceway {
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.vechicleWeapon = new LargeWeapon();
                     startRace(thePlayer);
+                    correct = "yes";
                 } else {
                     correct = "no";
                 }
@@ -104,8 +107,9 @@ public class Raceway {
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
-                    thePlayer.vechicleWeapon = new LargeWeapon();
+                    thePlayer.vechicleWeapon = new MidWeapon();
                     startRace(thePlayer);
+                    correct = "yes";
                 } else {
                     correct = "no";
                 }
@@ -114,8 +118,9 @@ public class Raceway {
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
-                    thePlayer.vechicleWeapon = new LargeWeapon();
+                    thePlayer.vechicleWeapon = new SmallWeapon();
                     startRace(thePlayer);
+                    correct = "yes";
                 } else {
                     correct = "no";
                 }
@@ -362,8 +367,8 @@ public class Raceway {
         }
         switch (int_random) {
             case 2:
+                System.out.println(theAI.getNameOfDriver() + " trys to use their boost ");
                 theAI.boost();
-                System.out.println(theAI.getNameOfDriver() + " boosts");
                 break;
             case 3:
                 theAI.attack(The_Creepy_Coupe);
@@ -371,7 +376,7 @@ public class Raceway {
                 break;
             case 4:
                 System.out.println(theAI.getNameOfDriver() + " uses their power");
-                theAI.getPower();
+                System.out.println(theAI.getPower());
                 theAI.boost();
                 break;
             default:
@@ -390,8 +395,8 @@ public class Raceway {
         }
         switch (int_random) {
             case 2:
+                System.out.println(theAI.getNameOfDriver() + " trys to use their boost ");
                 theAI.boost();
-                System.out.println(theAI.getNameOfDriver() + " boosts");
                 break;
             case 3:
                 theAI.attack(The_Creepy_Coupe);
@@ -399,7 +404,7 @@ public class Raceway {
                 break;
             case 4:
                 System.out.println(theAI.getNameOfDriver() + " uses their power");
-                theAI.getPower();
+                System.out.println(theAI.getPower());
                 theAI.boost();
                 break;
             default:
@@ -418,8 +423,8 @@ public class Raceway {
         }
         switch (int_random) {
             case 2:
+                System.out.println(theAI.getNameOfDriver() + " trys to use their boost ");
                 theAI.boost();
-                System.out.println(theAI.getNameOfDriver() + " boosts");
                 break;
             case 3:
                 theAI.attack(The_Creepy_Coupe);
@@ -427,7 +432,7 @@ public class Raceway {
                 break;
             case 4:
                 System.out.println(theAI.getNameOfDriver() + " uses their power");
-                theAI.getPower();
+                System.out.println(theAI.getPower());
                 theAI.boost();
                 break;
             default:
@@ -477,7 +482,104 @@ public class Raceway {
             The_Army_surplus_Special.laps = The_Army_surplus_Special.laps + 1;
             The_Army_surplus_Special.distance = 0;
         }
+        if (The_Buzz_Wagon.distance >= 100) {
+            The_Buzz_Wagon.laps = The_Buzz_Wagon.laps + 1;
+            The_Buzz_Wagon.distance = 0;
+        }
 
+    }
+
+    public static void finalLapCheck(Engine thePlayer) {
+        if (thePlayer.laps >= 3) {
+            playerWin(thePlayer);
+        }
+        if (The_Boudler_moblie.laps >= 3) {
+            largeAIWin(The_Boudler_moblie, thePlayer);
+        }
+        if (Penelope_Pitstop.laps >= 3) {
+            midAIWin(Penelope_Pitstop, thePlayer);
+        }
+        if (The_Turbo_Terrific.laps >= 3) {
+            smallAIWin(The_Turbo_Terrific, thePlayer);
+        }
+        if (The_Mean_Machine.laps >= 3) {
+            largeAIWin(The_Mean_Machine, thePlayer);
+        }
+        if (The_Bullet_Proof_Bomb.laps >= 3) {
+            midAIWin(The_Bullet_Proof_Bomb, thePlayer);
+        }
+        if (The_Arkansas_Chuggabug.laps >= 3) {
+            smallAIWin(The_Arkansas_Chuggabug, thePlayer);
+        }
+        if (The_Creepy_Coupe.laps >= 3) {
+            midAIWin(The_Creepy_Coupe, thePlayer);
+        }
+        if (The_Convert_a_Car.laps >= 3) {
+            largeAIWin(The_Convert_a_Car, thePlayer);
+        }
+        if (The_Army_surplus_Special.laps >= 3) {
+            largeAIWin(The_Army_surplus_Special, thePlayer);
+        }
+        if (The_Buzz_Wagon.laps >= 3) {
+            largeAIWin(The_Buzz_Wagon, thePlayer);
+        }
+    }
+
+    public static void playerWin(Engine thePlayer) {
+        System.out.println("Dispite being a new racer you still mange to beat everyone else. The player had a car with a speed of " + thePlayer.getSpeed());
+        sleepFunction();
+        System.out.println("Would you like to race again?");
+        correct = "No";
+
+    }
+
+    public static void largeAIWin(LargeVechicleType theAI, Engine thePlayer) {
+        System.out.println("todays winner is " + theAI.getNameOfDriver() + " dispite being a large vechicle their vechicle had a speed " + theAI.getSpeed() + " I guess though it weighed " + theAI.getWeight() + " that didn't hold them back. Congrats " + theAI.getNameOfDriver());
+        sleepFunction();
+        lose(thePlayer);
+    }
+
+    public static void midAIWin(MidVechicleType theAI, Engine thePlayer) {
+        System.out.println("todays winner is " + theAI.getNameOfDriver() + " I guess having states balanced all around payed off today they had a speed of " + theAI.getSpeed() + " and weight " + theAI.getWeight() + " which had a impact on todays results. Congrats " + theAI.getNameOfDriver());
+        sleepFunction();
+        lose(thePlayer);
+    }
+
+    public static void smallAIWin(SmallVechicleType theAI, Engine thePlayer) {
+        System.out.println("todays winner is " + theAI.getNameOfDriver() + " dispite being a large vechicle their vechicle had a speed " + theAI.getSpeed() + " I guess though it weighed " + theAI.getWeight() + " that didn't hold them back. Congrats " + theAI.getNameOfDriver());
+        sleepFunction();
+        lose(thePlayer);
+    }
+
+    public static void lose(Engine thePlayer) {
+        System.out.println("Unfornaly you lost todays race would you like to try again?");
+        correct = "no";
+        while (!"yes".equals(correct)) {
+            String tryaAgain = again.nextLine();
+            if ("yes".equals(tryaAgain) || "Yes".equals(tryaAgain)) {
+                System.out.println("Ok would you like to use your old car or would you like to create a new one? Please enter either yes or no:");
+                String newEngine = newVechicle.nextLine();
+                if ("yes".equals(newEngine) || "Yes".equals(newEngine)) {
+                    System.out.println("Okay lets build your new vehcicle");
+                    getPlayerVechicle();
+                    correct = "yes";
+                } else if ("no".equals(newEngine) || "No".equals(newEngine)) {
+                    System.out.println("Okay lets get back into racing ");
+                    startRace(thePlayer);
+                    correct = "yes";
+                } else {
+                    correct = "no";
+                }
+
+            }
+            if ("no".equals(tryaAgain) || "No".equals(tryaAgain)) {
+                System.out.println("okay thanks for racing and we hope to see you agian");
+                correct = "yes";
+            } else {
+                System.out.println("Im not sure what that means");
+                correct = "no";
+            }
+        }
     }
 
     public static void main(String[] args) {

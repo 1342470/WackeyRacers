@@ -1,16 +1,17 @@
 package com.mycompany.wackyracers;
 
 public class LargeVechicleType extends Engine {
+
     private int weight = 20;
     private int speed = 5;
     private String nameOfDriver;
-
+    private String power;
 
     public LargeVechicleType(String theName) {
         boostType = new BoostLarge();
         vechicleWeapon = new LargeWeapon();
-        nameOfDriver = theName ; 
-        
+        nameOfDriver = theName;
+
     }
 
     public String getNameOfDriver() {
@@ -20,8 +21,6 @@ public class LargeVechicleType extends Engine {
     public void setNameOfDriver(String nameOfDriver) {
         this.nameOfDriver = nameOfDriver;
     }
-    
-    
 
     public void display() {
         System.out.println("Your Vechicle has a base speed of " + getSpeed() + " and weight of " + getWeight());
@@ -47,8 +46,13 @@ public class LargeVechicleType extends Engine {
         vechicleWeapon.attack(theTarget);
     }
 
+    public String getPower() {
+        return power;
+    }
 
-
+    public void setPower(String power) {
+        this.power = power;
+    }
     
     
 

@@ -14,6 +14,7 @@ public class MidVechicleType extends Engine {
     private int weight = 10;
     private int speed = 10;
     private String nameOfDriver;
+    private String power;
 
     public MidVechicleType(String theName) {
         boostType = new BoostLarge();
@@ -53,5 +54,15 @@ public class MidVechicleType extends Engine {
     void attack(Engine theTarget) {
         vechicleWeapon.attack(theTarget);
     }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+    
+    
 
 }

@@ -14,6 +14,7 @@ public class SmallVechicleType extends Engine {
     private int weight = 5;
     private int speed = 15;
     private String nameOfDriver;
+    private String power;
 
 
     public SmallVechicleType(String theName) {
@@ -56,4 +57,13 @@ public class SmallVechicleType extends Engine {
         vechicleWeapon.attack(theTarget);
     }
 
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    
 }
