@@ -43,17 +43,23 @@ public class MidVechicleType extends Engine {
         this.weight = weight;
     }
 
+    @Override
     public int getSpeed() {
+        //return currentState.getSpeed();
         return speed + 100 - getWeight();
     }
 
-    public void setSpeed(int speed) {
+    @Override
+     void setSpeed(int speed) {
         this.speed = speed;
     }
 
+    @Override
     void attack(Engine theTarget) {
-        vechicleWeapon.attack(theTarget);
+        currentState.attack(theTarget);
+        //vechicleWeapon.attack(theTarget);
     }
+
 
     public String getPower() {
         return power;

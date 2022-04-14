@@ -24,6 +24,7 @@ public class Raceway {
     public static String correct = null;
     public static String theBoost;
     public static String theWeapon;
+    public static boolean winCon = false;
 
     public static LargeVechicleType The_Boudler_moblie = new LargeVechicleType("The Slag Brothers ");
     public static MidVechicleType Penelope_Pitstop = new MidVechicleType("Penelope Pitstop");
@@ -78,17 +79,18 @@ public class Raceway {
     public static void startRace(Engine thePlayer) {
         thePlayer.display();
         setpower(thePlayer);
-        while (thePlayer.laps != 3 || The_Boudler_moblie.laps != 3 || Penelope_Pitstop.laps != 3 || The_Turbo_Terrific.laps != 3 || The_Mean_Machine.laps != 3 || The_Bullet_Proof_Bomb.laps != 3 || The_Arkansas_Chuggabug.laps != 3 || The_Convert_a_Car.laps != 3 || The_Creepy_Coupe.laps != 3 || The_Army_surplus_Special.laps != 3 || The_Buzz_Wagon.laps != 3) {
+        while (thePlayer.laps != 3 || The_Boudler_moblie.laps != 3 || Penelope_Pitstop.laps != 3 || The_Turbo_Terrific.laps != 3 || The_Mean_Machine.laps != 3 || The_Bullet_Proof_Bomb.laps != 3 || The_Arkansas_Chuggabug.laps != 3 || The_Convert_a_Car.laps != 3 || The_Creepy_Coupe.laps != 3 || The_Army_surplus_Special.laps != 3 || The_Buzz_Wagon.laps != 3 || winCon == false) {
             printContests(thePlayer);
             drive(thePlayer);
             lapCheck(thePlayer);
+            finalLapCheck(thePlayer);
 
         }
     }
 
     public static void getWeaponType(Engine thePlayer) {
         while (!"yes".equals(correct)) {
-            System.out.println("Which type of Weapon would you like. will you choose? Please note the bigger the boost the more you will weigh and you will be slower the more weight you have.");
+            System.out.println("Which type of Weapon would you like. will you choose? Please note the bigger the boost the more you will weigh and you will be slower the more weight you have.you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
             String vechicle = theName.nextLine();
 
             if ("large".equals(vechicle) || "Large".equals(vechicle)) {
@@ -124,6 +126,18 @@ public class Raceway {
                 } else {
                     correct = "no";
                 }
+            } else if ("non".equals(vechicle) || "no".equals(vechicle)) {
+                System.out.println("so you would like the no weapon, you may not be able to shoot however as the lack of attack is met with a lower weight leading to a overall higher speed: type yes or no?");
+                Scanner theResponse = new Scanner(System.in);
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
+                    thePlayer.vechicleWeapon = new NoWeapon();
+                    System.out.println("Great now lets choose your Weapon type");
+                    startRace(thePlayer);
+                    correct = "yes";
+                } else {
+                    correct = "no";
+                }
             } else {
                 System.out.println("Unkown Vechicle type");
                 correct = "no";
@@ -133,11 +147,11 @@ public class Raceway {
 
     public static void getBoosterType(Engine thePlayer) {
         while (!"yes".equals(correct)) {
-            System.out.println("Which type of boost would you like. will you choose? Please note the bigger the boost the more you will weigh and you will be slower the more weight you have.");
+            System.out.println("Which type of boost would you like. Please note the bigger the boost the more you will weigh and you will be slower the more weight you have. you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
             String vechicle = theName.nextLine();
 
             if ("large".equals(vechicle) || "Large".equals(vechicle)) {
-                System.out.println("so you would like the Large booster, type yes or no?");
+                System.out.println("so you would like the Large booster, low boosters but high distance in one go: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
@@ -149,7 +163,7 @@ public class Raceway {
                     correct = "no";
                 }
             } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
-                System.out.println("so you would like the mid vechicle, type yes or no?");
+                System.out.println("so you would like the mid booster, balanced amount of boost and uses: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
@@ -161,12 +175,24 @@ public class Raceway {
                     correct = "no";
                 }
             } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
-                System.out.println("so you would like the small booster, type yes or no?");
+                System.out.println("so you would like the small booster,low distance but high amounts of uses: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.boostType = new BoostSmall();
-                    System.out.println("Great now lets choose your booster type");
+                    System.out.println("Great now lets choose your Weapon type");
+                    getWeaponType(thePlayer);
+                    correct = "yes";
+                } else {
+                    correct = "no";
+                }
+            } else if ("non".equals(vechicle) || "no".equals(vechicle)) {
+                System.out.println("so you would like the no booster, you may not be able to boost however as the lack of booster and fuel onboard means lower weight leading to a overall higher speed: type yes or no?");
+                Scanner theResponse = new Scanner(System.in);
+                String theReply = theResponse.nextLine();
+                if ("yes".equals(theReply) || "Yes".equals(theReply)) {
+                    thePlayer.boostType = new NoBoost();
+                    System.out.println("Great now lets choose your Weapon type");
                     getWeaponType(thePlayer);
                     correct = "yes";
                 } else {
@@ -249,6 +275,19 @@ public class Raceway {
                 if (int_random == 1 || int_random == 3) {
                     thePlayer.distance += thePlayer.getSpeed();
                     System.out.println("You put your foot on the gas and drive on");
+                    Random rand2 = new Random();
+                    int powerChance = rand2.nextInt(upperbound);
+                    switch (powerChance) {
+                        case 1:
+                            thePlayer.currentState = thePlayer.poweredState;
+                            break;
+                        case 3:
+                            System.out.println("oh looks like the player just missed a chance to power up");
+                            break;
+                        default:
+                            System.out.println(" missing a chance for a power up");
+                            break;
+                    }
                     correct = "yes";
                 } else {
                     System.out.println("you tryed to put your foot down however your engine stalled");
@@ -363,6 +402,24 @@ public class Raceway {
         if (int_random == 1) {
             theAI.distance += theAI.getSpeed();
             System.out.println(theAI.getNameOfDriver() + " drives ahead");
+            Random rand2 = new Random();
+            int powerChance = rand2.nextInt(upperbound);
+            switch (powerChance) {
+                case 1:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
+                    theAI.currentState = theAI.poweredState;
+                    break;
+                case 3:
+                    System.out.println("oh looks like " + theAI.getNameOfDriver() + " just missed a chance to power up");
+                    break;
+                case 4:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
+                    theAI.currentState = theAI.poweredState;
+                    break;
+                default:
+                    System.out.println(" missing a chance for a power up");
+                    break;
+            }
 
         }
         switch (int_random) {
@@ -392,6 +449,24 @@ public class Raceway {
         if (int_random == 1) {
             theAI.distance += theAI.getSpeed();
             System.out.println(theAI.getNameOfDriver() + " drives ahead");
+            Random rand2 = new Random();
+            int powerChance = rand2.nextInt(upperbound);
+            switch (powerChance) {
+                case 1:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
+                    theAI.currentState = theAI.poweredState;
+                    break;
+                case 3:
+                    System.out.println("oh looks like " + theAI.getNameOfDriver() + " just missed a chance to power up");
+                    break;
+                case 4:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
+                    theAI.currentState = theAI.poweredState;
+                    break;
+                default:
+                    System.out.println(" missing a chance for a power up");
+                    break;
+            }
         }
         switch (int_random) {
             case 2:
@@ -420,6 +495,24 @@ public class Raceway {
         if (int_random == 1) {
             theAI.distance += theAI.getSpeed();
             System.out.println(theAI.getNameOfDriver() + " drives ahead");
+            Random rand2 = new Random();
+            int powerChance = rand2.nextInt(upperbound);
+            switch (powerChance) {
+                case 1:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
+                    theAI.currentState = theAI.poweredState;
+                    break;
+                case 3:
+                    System.out.println("oh looks like " + theAI.getNameOfDriver() + " just missed a chance to power up");
+                    break;
+                case 4:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
+                    theAI.currentState = theAI.poweredState;
+                    break;
+                default:
+                    System.out.println(" missing a chance for a power up");
+                    break;
+            }
         }
         switch (int_random) {
             case 2:
@@ -529,7 +622,35 @@ public class Raceway {
         System.out.println("Dispite being a new racer you still mange to beat everyone else. The player had a car with a speed of " + thePlayer.getSpeed());
         sleepFunction();
         System.out.println("Would you like to race again?");
-        correct = "No";
+        correct = "no";
+        while (!"yes".equals(correct)) {
+            String tryaAgain = again.nextLine();
+            if ("yes".equals(tryaAgain) || "Yes".equals(tryaAgain)) {
+                System.out.println("Ok would you like to use your old car or would you like to create a new one? Please enter either yes or no:");
+                String newEngine = newVechicle.nextLine();
+                if ("yes".equals(newEngine) || "Yes".equals(newEngine)) {
+                    System.out.println("Okay lets build your new vehcicle");
+                    getPlayerVechicle();
+                    resetGame(thePlayer);
+                    correct = "yes";
+                } else if ("no".equals(newEngine) || "No".equals(newEngine)) {
+                    System.out.println("Okay lets get back into racing ");
+                    resetGame(thePlayer);
+                    startRace(thePlayer);
+                    correct = "yes";
+                } else {
+                    correct = "no";
+                }
+
+            }
+            if ("no".equals(tryaAgain) || "No".equals(tryaAgain)) {
+                correct = "yes";
+                gameOver();
+            } else {
+                System.out.println("Im not sure what that means");
+                correct = "no";
+            }
+        }
 
     }
 
@@ -537,18 +658,63 @@ public class Raceway {
         System.out.println("todays winner is " + theAI.getNameOfDriver() + " dispite being a large vechicle their vechicle had a speed " + theAI.getSpeed() + " I guess though it weighed " + theAI.getWeight() + " that didn't hold them back. Congrats " + theAI.getNameOfDriver());
         sleepFunction();
         lose(thePlayer);
+        winCon = true;
     }
 
     public static void midAIWin(MidVechicleType theAI, Engine thePlayer) {
         System.out.println("todays winner is " + theAI.getNameOfDriver() + " I guess having states balanced all around payed off today they had a speed of " + theAI.getSpeed() + " and weight " + theAI.getWeight() + " which had a impact on todays results. Congrats " + theAI.getNameOfDriver());
         sleepFunction();
         lose(thePlayer);
+        winCon = true;
     }
 
     public static void smallAIWin(SmallVechicleType theAI, Engine thePlayer) {
         System.out.println("todays winner is " + theAI.getNameOfDriver() + " dispite being a large vechicle their vechicle had a speed " + theAI.getSpeed() + " I guess though it weighed " + theAI.getWeight() + " that didn't hold them back. Congrats " + theAI.getNameOfDriver());
         sleepFunction();
         lose(thePlayer);
+        winCon = true;
+    }
+
+    public static void gameOver() {
+        System.out.println("okay thanks for racing and we hope to see you agian");
+        winCon = true;
+    }
+
+    public static void resetGame(Engine thePlayer) {
+        thePlayer.laps = 0;
+        thePlayer.distance = 0;
+        The_Boudler_moblie.laps = 0;
+        The_Boudler_moblie.distance = 0;
+        Penelope_Pitstop.laps = 0;
+        Penelope_Pitstop.distance = 0;
+        The_Turbo_Terrific.laps = 0;
+        The_Turbo_Terrific.distance = 0;
+        The_Mean_Machine.laps = 0;
+        The_Mean_Machine.distance = 0;
+        The_Bullet_Proof_Bomb.laps = 0;
+        The_Bullet_Proof_Bomb.distance = 0;
+        The_Arkansas_Chuggabug.laps = 0;
+        The_Arkansas_Chuggabug.distance = 0;
+        The_Creepy_Coupe.laps = 0;
+        The_Creepy_Coupe.distance = 0;
+        The_Convert_a_Car.laps = 0;
+        The_Convert_a_Car.distance = 0;
+        The_Army_surplus_Special.laps = 0;
+        The_Army_surplus_Special.distance = 0;
+        The_Buzz_Wagon.laps = 0;
+        The_Buzz_Wagon.distance = 0;
+        thePlayer.health = 100;
+        The_Boudler_moblie.health = 100;
+        Penelope_Pitstop.health = 100;
+        The_Turbo_Terrific.health = 100;
+        The_Mean_Machine.health = 100;
+        The_Bullet_Proof_Bomb.health = 100;
+        The_Arkansas_Chuggabug.health = 100;
+        The_Creepy_Coupe.health = 100;
+        The_Convert_a_Car.health = 100;
+        The_Army_surplus_Special.health = 100;
+        The_Buzz_Wagon.health = 100;
+        winCon = false;
     }
 
     public static void lose(Engine thePlayer) {

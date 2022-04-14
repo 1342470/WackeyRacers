@@ -22,10 +22,12 @@ public class LargeVechicleType extends Engine {
         this.nameOfDriver = nameOfDriver;
     }
 
+    @Override
     public void display() {
         System.out.println("Your Vechicle has a base speed of " + getSpeed() + " and weight of " + getWeight());
     }
 
+    @Override
     public int getWeight() {
         return weight + BoostLarge.weight + LargeWeapon.weight;
     }
@@ -34,26 +36,32 @@ public class LargeVechicleType extends Engine {
         this.weight = weight;
     }
 
+    @Override
     public int getSpeed() {
+        //return currentState.getSpeed();
         return speed + 100 - getWeight();
     }
 
-    public void setSpeed(int speed) {
+    @Override
+     void setSpeed(int speed) {
         this.speed = speed;
     }
 
+    @Override
     void attack(Engine theTarget) {
-        vechicleWeapon.attack(theTarget);
+        currentState.attack(theTarget);
+        //vechicleWeapon.attack(theTarget);
     }
 
+    @Override
     public String getPower() {
         return power;
     }
 
+    @Override
     public void setPower(String power) {
         this.power = power;
     }
-    
-    
+
 
 }
