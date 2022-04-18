@@ -38,28 +38,50 @@ public class Raceway {
     public static LargeVechicleType The_Buzz_Wagon = new LargeVechicleType("Rufus Ruffcut and Sawtooth ");
 
     public static void printContests(Engine thePlayer) {
-        System.out.println("The_Boudler_moblie has currently traveled" + The_Boudler_moblie.distance + " and is on lap " + The_Boudler_moblie.laps);
+        checklLargeState(The_Boudler_moblie);
         sleepFunction();
-        System.out.println("Penelope_Pitstop has currently traveled" + Penelope_Pitstop.distance + " and is on lap " + Penelope_Pitstop.laps);
+        checkMidState(Penelope_Pitstop);
         sleepFunction();
-        System.out.println("The_Turbo_Terrific has currently traveled" + The_Turbo_Terrific.distance + " and is on lap " + The_Turbo_Terrific.laps);
+        checkSmallState(The_Turbo_Terrific);
         sleepFunction();
-        System.out.println("The_Mean_Machine has currently traveled" + The_Mean_Machine.distance + " and is on lap " + The_Mean_Machine.laps);
+        checklLargeState(The_Mean_Machine);
         sleepFunction();
-        System.out.println("The_Bullet_Proof_Bomb has currently traveled" + The_Bullet_Proof_Bomb.distance + " and is on lap " + The_Bullet_Proof_Bomb.laps);
+        checkMidState(The_Bullet_Proof_Bomb);
         sleepFunction();
-        System.out.println("The_Arkansas_Chuggabug has currently traveled" + The_Arkansas_Chuggabug.distance + " and is on lap " + The_Arkansas_Chuggabug.laps);
+        checkSmallState(The_Arkansas_Chuggabug);
         sleepFunction();
-        System.out.println("The_Convert_a_Car has currently traveled" + The_Convert_a_Car.distance + " and is on lap " + The_Convert_a_Car.laps);
+        checklLargeState(The_Convert_a_Car);
         sleepFunction();
-        System.out.println("The_Creepy_Coupe has currently traveled" + The_Creepy_Coupe.distance + " and is on lap " + The_Creepy_Coupe.laps);
+        checkMidState(The_Creepy_Coupe);
         sleepFunction();
-        System.out.println("The_Army_surplus_Special has currently traveled" + The_Army_surplus_Special.distance + " and is on lap " + The_Army_surplus_Special.laps);
+        checklLargeState(The_Army_surplus_Special);
         sleepFunction();
+        checklLargeState(The_Buzz_Wagon);
         System.out.println("The_Buzz_Wagon has currently traveled" + The_Buzz_Wagon.distance + " and is on lap " + The_Buzz_Wagon.laps);
         sleepFunction();
         System.out.println("You have currently traveled" + thePlayer.distance + " and are on lap " + thePlayer.laps);
         sleepFunction();
+    }
+
+    public static void checkSmallState(SmallVechicleType theAI) {
+        if (theAI.currentState == theAI.destoryedState) {
+        } else {
+            System.out.println(theAI.getNameOfDriver() + " has currently traveled" + theAI.distance + " and is on lap " + theAI.laps);
+        }
+    }
+
+    public static void checkMidState(MidVechicleType theAI) {
+        if (theAI.currentState == theAI.destoryedState) {
+        } else {
+            System.out.println(theAI.getNameOfDriver() + " has currently traveled" + theAI.distance + " and is on lap " + theAI.laps);
+        }
+    }
+
+    public static void checklLargeState(LargeVechicleType theAI) {
+        if (theAI.currentState == theAI.destoryedState) {
+        } else {
+            System.out.println(theAI.getNameOfDriver() + " has currently traveled" + theAI.distance + " and is on lap " + theAI.laps);
+        }
     }
 
     public static void setpower(Engine thePlayer) {
@@ -99,6 +121,7 @@ public class Raceway {
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.vechicleWeapon = new LargeWeapon();
+                    //testRaceWay(thePlayer);
                     startRace(thePlayer);
                     correct = "yes";
                 } else {
@@ -364,25 +387,25 @@ public class Raceway {
                 System.out.println("unknown action");
             }
             sleepFunction();
-            aiTurnLarge(The_Boudler_moblie);
+            aiTurnLarge(The_Boudler_moblie, thePlayer);
             sleepFunction();
-            aiTurnMid(Penelope_Pitstop);
+            aiTurnMid(Penelope_Pitstop, thePlayer);
             sleepFunction();
-            aiTurnLarge(The_Mean_Machine);
+            aiTurnLarge(The_Mean_Machine, thePlayer);
             sleepFunction();
-            aiTurnMid(The_Bullet_Proof_Bomb);
+            aiTurnMid(The_Bullet_Proof_Bomb, thePlayer);
             sleepFunction();
-            aiTurnSmall(The_Turbo_Terrific);
+            aiTurnSmall(The_Turbo_Terrific, thePlayer);
             sleepFunction();
-            aiTurnSmall(The_Arkansas_Chuggabug);
+            aiTurnSmall(The_Arkansas_Chuggabug, thePlayer);
             sleepFunction();
-            aiTurnLarge(The_Convert_a_Car);
+            aiTurnLarge(The_Convert_a_Car, thePlayer);
             sleepFunction();
-            aiTurnMid(The_Creepy_Coupe);
+            aiTurnMid(The_Creepy_Coupe, thePlayer);
             sleepFunction();
-            aiTurnLarge(The_Army_surplus_Special);
+            aiTurnLarge(The_Army_surplus_Special, thePlayer);
             sleepFunction();
-            aiTurnLarge(The_Buzz_Wagon);
+            aiTurnLarge(The_Buzz_Wagon, thePlayer);
             sleepFunction();
         }
     }
@@ -395,7 +418,7 @@ public class Raceway {
         }
     }
 
-    public static void aiTurnLarge(LargeVechicleType theAI) {
+    public static void aiTurnLarge(LargeVechicleType theAI, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 6;
         int int_random = rand.nextInt(upperbound);
@@ -416,6 +439,10 @@ public class Raceway {
                     System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
                     theAI.currentState = theAI.poweredState;
                     break;
+                case 6:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a pick up some extra ammo");
+                    theAI.vechicleWeapon.setAmmo(1);
+                    break;
                 default:
                     System.out.println(" missing a chance for a power up");
                     break;
@@ -428,8 +455,7 @@ public class Raceway {
                 theAI.boost();
                 break;
             case 3:
-                theAI.attack(The_Creepy_Coupe);
-                System.out.println(theAI.getNameOfDriver() + " attacks");
+                targetRandomLarge(theAI, thePlayer);
                 break;
             case 4:
                 System.out.println(theAI.getNameOfDriver() + " uses their power");
@@ -442,7 +468,7 @@ public class Raceway {
         }
     }
 
-    public static void aiTurnMid(MidVechicleType theAI) {
+    public static void aiTurnMid(MidVechicleType theAI, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 6;
         int int_random = rand.nextInt(upperbound);
@@ -463,6 +489,10 @@ public class Raceway {
                     System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
                     theAI.currentState = theAI.poweredState;
                     break;
+                case 6:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a pick up some extra ammo");
+                    theAI.vechicleWeapon.setAmmo(1);
+                    break;
                 default:
                     System.out.println(" missing a chance for a power up");
                     break;
@@ -474,8 +504,7 @@ public class Raceway {
                 theAI.boost();
                 break;
             case 3:
-                theAI.attack(The_Creepy_Coupe);
-                System.out.println(theAI.getNameOfDriver() + " attacks");
+                targetRandomMid(theAI, thePlayer);
                 break;
             case 4:
                 System.out.println(theAI.getNameOfDriver() + " uses their power");
@@ -488,7 +517,7 @@ public class Raceway {
         }
     }
 
-    public static void aiTurnSmall(SmallVechicleType theAI) {
+    public static void aiTurnSmall(SmallVechicleType theAI, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 6;
         int int_random = rand.nextInt(upperbound);
@@ -509,6 +538,10 @@ public class Raceway {
                     System.out.println(theAI.getNameOfDriver() + " manged to get a powerup their car has transformed to match its powered state");
                     theAI.currentState = theAI.poweredState;
                     break;
+                case 6:
+                    System.out.println(theAI.getNameOfDriver() + " manged to get a pick up some extra ammo");
+                    theAI.vechicleWeapon.setAmmo(1);
+                    break;
                 default:
                     System.out.println(" missing a chance for a power up");
                     break;
@@ -520,8 +553,7 @@ public class Raceway {
                 theAI.boost();
                 break;
             case 3:
-                theAI.attack(The_Creepy_Coupe);
-                System.out.println(theAI.getNameOfDriver() + " attacks");
+                targetRandomSmall(theAI, thePlayer);
                 break;
             case 4:
                 System.out.println(theAI.getNameOfDriver() + " uses their power");
@@ -531,6 +563,141 @@ public class Raceway {
             default:
                 System.out.println("Oh no the " + theAI.getNameOfDriver() + " stalled");
                 break;
+        }
+    }
+
+    public static void targetRandomSmall(SmallVechicleType theAttacker, Engine thePlayer) {
+        Random rand = new Random();
+        int upperbound = 12;
+        int int_random = rand.nextInt(upperbound);
+        if (int_random == 1) {
+            theAttacker.attack(The_Boudler_moblie);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Boudler_moblie they now have " + The_Boudler_moblie.health + " health remaining");
+        } else if (int_random == 1) {
+            theAttacker.attack(The_Boudler_moblie);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Boudler_moblie they now have " + The_Boudler_moblie.health + " health remaining");
+        } else if (int_random == 2) {
+            theAttacker.attack(Penelope_Pitstop);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots Penelope_Pitstope they now have " + Penelope_Pitstop.health + " health remaining");
+        } else if (int_random == 3) {
+            theAttacker.attack(The_Turbo_Terrific);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Turbo_Terrific they now have " + The_Turbo_Terrific.health + " health remaining");
+        } else if (int_random == 4) {
+            theAttacker.attack(The_Mean_Machine);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Mean_Machine they now have " + The_Mean_Machine.health + " health remaining");
+        } else if (int_random == 5) {
+            theAttacker.attack(The_Bullet_Proof_Bomb);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Bullet_Proof_Bomb they now have " + The_Bullet_Proof_Bomb.health + "health remaining");
+        } else if (int_random == 6) {
+            theAttacker.attack(The_Arkansas_Chuggabug);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Arkansas_Chuggabug they now have " + The_Arkansas_Chuggabug.health + " health remaining");
+        } else if (int_random == 7) {
+            theAttacker.attack(The_Creepy_Coupe);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Creepy_Coupe they now have " + The_Creepy_Coupe.health + " health remaining");
+        } else if (int_random == 8) {
+            theAttacker.attack(The_Convert_a_Car);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Convert_a_Car they now have " + The_Convert_a_Car.health + " health remaining");
+        } else if (int_random == 9) {
+            theAttacker.attack(The_Army_surplus_Special);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Army_surplus_Special they now have " + The_Army_surplus_Special.health + " health remaining");
+        } else if (int_random == 10) {
+            theAttacker.attack(The_Buzz_Wagon);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Buzz_Wagon they now have " + The_Buzz_Wagon.health + " remaining");
+        } else if (int_random == 11) {
+            theAttacker.attack(thePlayer);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots you your health is now " + thePlayer.health);
+        } else {
+            System.out.println(theAttacker.getNameOfDriver() + " trys to shoot at another racer but fails");
+        }
+    }
+
+    public static void targetRandomMid(MidVechicleType theAttacker, Engine thePlayer) {
+        Random rand = new Random();
+        int upperbound = 14;
+        int int_random = rand.nextInt(upperbound);
+        if (int_random == 1) {
+            theAttacker.attack(The_Boudler_moblie);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Boudler_moblie they now have " + The_Boudler_moblie.health + " health remaining");
+        } else if (int_random == 1) {
+            theAttacker.attack(The_Boudler_moblie);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Boudler_moblie they now have " + The_Boudler_moblie.health + " health remaining");
+        } else if (int_random == 2) {
+            theAttacker.attack(Penelope_Pitstop);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots Penelope_Pitstope they now have " + Penelope_Pitstop.health + " health remaining");
+        } else if (int_random == 3) {
+            theAttacker.attack(The_Turbo_Terrific);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Turbo_Terrific they now have " + The_Turbo_Terrific.health + " health remaining");
+        } else if (int_random == 4) {
+            theAttacker.attack(The_Mean_Machine);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Mean_Machine they now have " + The_Mean_Machine.health + " health remaining");
+        } else if (int_random == 5) {
+            theAttacker.attack(The_Bullet_Proof_Bomb);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Bullet_Proof_Bomb they now have " + The_Bullet_Proof_Bomb.health + "health remaining");
+        } else if (int_random == 6) {
+            theAttacker.attack(The_Arkansas_Chuggabug);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Arkansas_Chuggabug they now have " + The_Arkansas_Chuggabug.health + " health remaining");
+        } else if (int_random == 7) {
+            theAttacker.attack(The_Creepy_Coupe);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Creepy_Coupe they now have " + The_Creepy_Coupe.health + " health remaining");
+        } else if (int_random == 8) {
+            theAttacker.attack(The_Convert_a_Car);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Convert_a_Car they now have " + The_Convert_a_Car.health + " health remaining");
+        } else if (int_random == 9) {
+            theAttacker.attack(The_Army_surplus_Special);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Army_surplus_Special they now have " + The_Army_surplus_Special.health + " health remaining");
+        } else if (int_random == 10) {
+            theAttacker.attack(The_Buzz_Wagon);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Buzz_Wagon they now have " + The_Buzz_Wagon.health + " remaining");
+        } else if (int_random == 11) {
+            theAttacker.attack(thePlayer);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots you your health is now " + thePlayer.health);
+        } else {
+            System.out.println(theAttacker.getNameOfDriver() + " trys to shoot at another racer but fails");
+        }
+    }
+
+    public static void targetRandomLarge(LargeVechicleType theAttacker, Engine thePlayer) {
+        Random rand = new Random();
+        int upperbound = 16;
+        int int_random = rand.nextInt(upperbound);
+        if (int_random == 1) {
+            theAttacker.attack(The_Boudler_moblie);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Boudler_moblie they now have " + The_Boudler_moblie.health + " health remaining");
+        } else if (int_random == 1) {
+            theAttacker.attack(The_Boudler_moblie);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Boudler_moblie they now have " + The_Boudler_moblie.health + " health remaining");
+        } else if (int_random == 2) {
+            theAttacker.attack(Penelope_Pitstop);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots Penelope_Pitstope they now have " + Penelope_Pitstop.health + " health remaining");
+        } else if (int_random == 3) {
+            theAttacker.attack(The_Turbo_Terrific);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Turbo_Terrific they now have " + The_Turbo_Terrific.health + " health remaining");
+        } else if (int_random == 4) {
+            theAttacker.attack(The_Mean_Machine);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Mean_Machine they now have " + The_Mean_Machine.health + " health remaining");
+        } else if (int_random == 5) {
+            theAttacker.attack(The_Bullet_Proof_Bomb);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Bullet_Proof_Bomb they now have " + The_Bullet_Proof_Bomb.health + "health remaining");
+        } else if (int_random == 6) {
+            theAttacker.attack(The_Arkansas_Chuggabug);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Arkansas_Chuggabug they now have " + The_Arkansas_Chuggabug.health + " health remaining");
+        } else if (int_random == 7) {
+            theAttacker.attack(The_Creepy_Coupe);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Creepy_Coupe they now have " + The_Creepy_Coupe.health + " health remaining");
+        } else if (int_random == 8) {
+            theAttacker.attack(The_Convert_a_Car);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Convert_a_Car they now have " + The_Convert_a_Car.health + " health remaining");
+        } else if (int_random == 9) {
+            theAttacker.attack(The_Army_surplus_Special);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Army_surplus_Special they now have " + The_Army_surplus_Special.health + " health remaining");
+        } else if (int_random == 10) {
+            theAttacker.attack(The_Buzz_Wagon);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots The_Buzz_Wagon they now have " + The_Buzz_Wagon.health + " remaining");
+        } else if (int_random == 11) {
+            theAttacker.attack(thePlayer);
+            System.out.println(theAttacker.getNameOfDriver() + " shoots you your health is now " + thePlayer.health);
+        } else {
+            System.out.println(theAttacker.getNameOfDriver() + " trys to shoot at another racer but fails");
         }
     }
 
@@ -746,6 +913,18 @@ public class Raceway {
                 correct = "no";
             }
         }
+    }
+
+    public static void testRaceWay(Engine ThePlayer) {
+
+        ThePlayer.attack(The_Turbo_Terrific);
+        checkSmallState(The_Turbo_Terrific);
+        ThePlayer.vechicleWeapon.setAmmo(1);
+        ThePlayer.attack(The_Turbo_Terrific);
+        checkSmallState(The_Turbo_Terrific);
+
+        ThePlayer.attack(The_Turbo_Terrific);
+        checkSmallState(The_Turbo_Terrific);
     }
 
     public static void main(String[] args) {

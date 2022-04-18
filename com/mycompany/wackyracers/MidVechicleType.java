@@ -18,7 +18,7 @@ public class MidVechicleType extends Engine {
 
     public MidVechicleType(String theName) {
         boostType = new BoostLarge();
-        vechicleWeapon = new LargeWeapon();
+        vechicleWeapon = new MidWeapon();
          nameOfDriver = theName ; 
 
     }
@@ -32,7 +32,7 @@ public class MidVechicleType extends Engine {
     }
 
     public void display() {
-        System.out.println("Your Vechicle has a base speed of " + getSpeed() + " and weight of " + getWeight());
+        System.out.println("Your vehicle type is mid and has a base speed of " + getSpeed() + " and weight of " + getWeight());
     }
 
     public int getWeight() {

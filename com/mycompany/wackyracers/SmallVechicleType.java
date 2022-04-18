@@ -33,8 +33,9 @@ public class SmallVechicleType extends Engine {
     }
     
 
+    @Override
     public void display() {
-        System.out.println("Your Vechicle has a base speed of " + getSpeed() + " and weight of " + getWeight());
+        System.out.println("Your vehicle type is small and has a base speed of " + getSpeed() + " and weight of " + getWeight());
     }
 
     public int getWeight() {

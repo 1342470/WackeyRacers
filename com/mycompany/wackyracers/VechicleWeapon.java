@@ -10,5 +10,11 @@ package com.mycompany.wackyracers;
  * @author kylej
  */
 public interface VechicleWeapon {
+
     public void attack(Engine theTarget);
+
+    public void setAmmo(int ammo);
+
+
+    
 }
