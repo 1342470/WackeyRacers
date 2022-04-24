@@ -12,11 +12,11 @@ package com.mycompany.wackyracers;
 public abstract class Engine {
 
     //sets various states a vechicle can go to 
-    VechicleState destoryedState;
-    VechicleState poweredState;
-    VechicleState brokenDownState;
-    VechicleState normalState;
-    VechicleState currentState = normalState;
+    VechicleState destoryedState = new DistoryedState(this);
+    VechicleState poweredState = new PoweredState(this);
+    VechicleState brokenDownState  = new BrokenDownState(this);
+    VechicleState normalState = new NormalState(this);
+    VechicleState currentState;
     //allows engine to swap boost and vechicle types
     BoostType boostType;
     VechicleWeapon vechicleWeapon;
@@ -27,10 +27,7 @@ public abstract class Engine {
     private String power;
 
     public Engine() {
-        destoryedState = new DistoryedState(this);
-        poweredState = new PoweredState(this);
-        brokenDownState = new BrokenDownState(this);
-        normalState = new NormalState(this);
+        currentState = normalState;
         
         if (health >50){
             currentState = normalState;
@@ -55,6 +52,7 @@ public abstract class Engine {
         boostType = theType;
     }
 
+    public abstract int getStateSpeed();
     /**
      * sets the type of weapon that will be used during the race this could be
      * either small,mid or large
@@ -85,6 +83,9 @@ public abstract class Engine {
         return power;
     }
 
+    /**
+     * prints out the stats of a vechicle including speed, weight
+     */
     abstract void display();
 
     /**

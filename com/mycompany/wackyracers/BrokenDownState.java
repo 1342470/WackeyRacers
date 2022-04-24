@@ -15,7 +15,7 @@ public class BrokenDownState implements VechicleState {
  
     public BrokenDownState(Engine theEngine) {
         this.theEngine = theEngine;
-        theEngine.setSpeed(this.getSpeed()/2);
+        //theEngine.setSpeed(theEngine.getSpeed()/2);
 
     }
 
@@ -34,7 +34,7 @@ public class BrokenDownState implements VechicleState {
     
     @Override
     public int getSpeed() {
-        return theEngine.getSpeed() + 125 - theEngine.getWeight();
+        return theEngine.getStateSpeed() + 75 - theEngine.getWeight();
     }
 
 

@@ -20,7 +20,10 @@ public class MidWeapon implements VechicleWeapon {
             theTarget.health -= 25;
             System.out.println("you fire at the target you now have " + this.ammo + " shots left");
             setAmmo(-1);
-            if (theTarget.health <= 0) {
+            if (theTarget.health <= 50) {
+                theTarget.currentState = theTarget.brokenDownState;
+                System.out.println("owch thats got to hurt the damage to the vechicle has impacted the racers engine");
+            }else if (theTarget.health <= 0) {
                 theTarget.currentState = theTarget.destoryedState;
                 System.out.println("a racer has been eliminated");
             }

@@ -38,8 +38,11 @@ public class LargeVechicleType extends Engine {
 
     @Override
     public int getSpeed() {
-        //return currentState.getSpeed();
-        return speed + 100 - getWeight();
+        return currentState.getSpeed();
+    }
+    
+    public int getStateSpeed(){
+        return speed;
     }
 
     @Override

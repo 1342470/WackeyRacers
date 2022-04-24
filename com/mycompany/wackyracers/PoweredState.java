@@ -17,7 +17,7 @@ public class PoweredState implements VechicleState {
     public PoweredState(Engine theEngine) {
         this.theEngine = theEngine;
         theEngine.health = 999;
-        theEngine.setSpeed(this.getSpeed() + 20);
+        //theEngine.setSpeed(theEngine.getSpeed() + 20);
 
         if (powerleft <= 0) {
             System.out.println("the superCharge in the powerup has ran out the car transfroms back into its normal state ");
@@ -46,7 +46,7 @@ public class PoweredState implements VechicleState {
     public int getSpeed() {
         powerleft= powerleft-1;
         System.out.println("you engine is supercharged, the extra power makes faster than normal");
-        return theEngine.getSpeed() + 125 - theEngine.getWeight();
+        return theEngine.getStateSpeed() + 125 - theEngine.getWeight();
         
 
     }

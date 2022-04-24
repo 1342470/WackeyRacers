@@ -25,6 +25,7 @@ public class Raceway {
     public static String theBoost;
     public static String theWeapon;
     public static boolean winCon = false;
+    public static String shotTarget;
 
     public static LargeVechicleType The_Boudler_moblie = new LargeVechicleType("The Slag Brothers ");
     public static MidVechicleType Penelope_Pitstop = new MidVechicleType("Penelope Pitstop");
@@ -36,6 +37,7 @@ public class Raceway {
     public static MidVechicleType The_Creepy_Coupe = new MidVechicleType("The Gruesome Twosome");
     public static LargeVechicleType The_Army_surplus_Special = new LargeVechicleType("Sergeant Blast and Private Meekley ");
     public static LargeVechicleType The_Buzz_Wagon = new LargeVechicleType("Rufus Ruffcut and Sawtooth ");
+    
 
     public static void printContests(Engine thePlayer) {
         checklLargeState(The_Boudler_moblie);
@@ -97,6 +99,7 @@ public class Raceway {
         The_Army_surplus_Special.setPower("The_Army_surplus_Special enlists an boost in power");
 
     }
+    
 
     public static void startRace(Engine thePlayer) {
         thePlayer.display();
@@ -329,48 +332,50 @@ public class Raceway {
                     System.out.println("you tryed to boost  however your boost stalled");
                     correct = "yes";
                 }
-            } else if ("shoot".equals(action) || "shoot".equals(action)) {
+            } else if ("shoot".equals(action) || "Shoot".equals(action)) {
+                while (!"yes".equals(shotTarget)) {
                 System.out.println("who will you shoot you can shoot either 'The_Boudler_moblie', 'Penelope_Pitstop', 'The_Turbo_Terrific', 'The_Mean_Machine', 'The_Bullet_Proof_Bomb', 'The_Arkansas_Chuggabug', 'The_Creepy_Coupe', 'The_Convert_a_Car' or 'The_Army_surplus_Special' ?");
                 String shot = theShot.nextLine();
                 if ("The_Boudler_moblie".equals(shot) || "The Boudler moblie".equals(shot) || "the boudler moblie".equals(shot)) {
                     System.out.println("you shoot the boulder moblie");
                     thePlayer.attack(The_Boudler_moblie);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("Penelope_Pitstop".equals(shot) || "Penelope Pitstop".equals(shot) || "penelope pitstop".equals(shot)) {
                     System.out.println("you shoot Penelope_Pitstop");
                     thePlayer.attack(Penelope_Pitstop);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("The_Turbo_Terrific".equals(shot) || "The Turbo Terrific".equals(shot) || "the turbo terrific".equals(shot)) {
                     System.out.println("you shoot The_Turbo_Terrific");
                     thePlayer.attack(The_Turbo_Terrific);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("The_Mean_Machine".equals(shot) || "The Mean Machine".equals(shot) || "the mean machine".equals(shot)) {
                     System.out.println("you shoot The_Mean_Machine");
                     thePlayer.attack(The_Mean_Machine);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("The_Bullet_Proof_Bomb".equals(shot) || "The Bullet Proof Bomb".equals(shot) || "the bullet proof bomb".equals(shot)) {
                     System.out.println("you shoot The_Bullet_Proof_Bomb");
                     thePlayer.attack(The_Bullet_Proof_Bomb);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("The_Arkansas_Chuggabug".equals(shot) || "The Arkansas Chuggabug".equals(shot) || "the arkansas chuggabug".equals(shot)) {
                     System.out.println("you shoot The_Arkansas_Chuggabug");
                     thePlayer.attack(The_Arkansas_Chuggabug);
-                    correct = "yes";
-                } else if ("The_Creepy_Coupe".equals(shot) || "The_Creepy_Coupe".equals(shot) || "The_Creepy_Coupe".equals(shot)) {
+                    shotTarget = "yes";
+                } else if ("The_Creepy_Coupe".equals(shot) || "The Creepy Coupe".equals(shot) || "the creepy coupe".equals(shot)) {
                     System.out.println("you shoot The_Creepy_Coupe");
                     thePlayer.attack(The_Creepy_Coupe);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("The_Convert_a_Car".equals(shot) || "The Convert a Car".equals(shot) || "the convert a car".equals(shot)) {
                     System.out.println("you shoot The_Convert_a_Car");
                     thePlayer.attack(The_Convert_a_Car);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else if ("The_Army_surplus_Special".equals(shot) || "The Army surplus Special".equals(shot) || "the army surplus special".equals(shot)) {
                     System.out.println("you shoot ");
                     thePlayer.attack(The_Army_surplus_Special);
-                    correct = "yes";
+                    shotTarget = "yes";
                 } else {
                     System.out.println("unknown action");
                 }
+              }
 
             } else if ("power".equals(action) || "Power".equals(action)) {
                 thePlayer.getPower();

@@ -32,7 +32,7 @@ public class NormalState implements VechicleState {
     
     @Override
     public int getSpeed() {
-        return theEngine.getSpeed() + 100 - theEngine.getWeight();
+        return theEngine.getStateSpeed() + 100 - theEngine.getWeight();
     }
 
 
