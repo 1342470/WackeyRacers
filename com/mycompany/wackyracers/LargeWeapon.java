@@ -14,6 +14,10 @@ public class LargeWeapon implements VechicleWeapon {
     private int ammo = 1;
     public static int weight = 6;
 
+    /**
+     * allows weapon to shoot other engines 
+     * @param theTarget target of shot
+     */
     @Override
     public void attack(Engine theTarget) {
         if (this.ammo >= 1) {
@@ -36,6 +40,10 @@ public class LargeWeapon implements VechicleWeapon {
         return ammo;
     }
 
+    /**
+     * allows ammo to be stocked
+     * @param ammo new value of ammo
+     */
     public void setAmmo(int ammo) {
         this.ammo = ammo + this.ammo;
         System.out.println("you now have " + getAmmo() + " shots ");

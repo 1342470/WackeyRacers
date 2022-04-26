@@ -11,10 +11,18 @@ package com.mycompany.wackyracers;
  */
 public interface VechicleWeapon {
 
+    /**
+     * allows objects to attack another
+     *
+     * @param theTarget target of attack
+     */
     public void attack(Engine theTarget);
 
+    /**
+     * allows ammo to be stocked
+     *
+     * @param ammo new value of ammo
+     */
     public void setAmmo(int ammo);
 
-
-    
 }

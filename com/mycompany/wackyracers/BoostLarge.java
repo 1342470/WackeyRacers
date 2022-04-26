@@ -14,6 +14,9 @@ public class BoostLarge implements BoostType{
     public static int weight = 30;
 
     @Override
+    /**
+     * uses boost to extend distnace if uses are higher than 1 
+     */
     public void boost(Engine theTarget) {
         if(this.uses >=1){
         theTarget.distance +=30;
@@ -21,10 +24,18 @@ public class BoostLarge implements BoostType{
         }else{System.out.println("the boost failed as the booster fuel is empty");}
     }
 
+    /**
+     * 
+     * @return number of boosts left
+     */
     public int getUses() {
         return uses;
     }
 
+    /**
+     * sets number of boosts 
+     * @param uses number of boosts
+     */
     public void setUses(int uses) {
         this.uses = uses;
     }

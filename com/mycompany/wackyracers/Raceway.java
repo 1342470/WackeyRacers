@@ -39,6 +39,10 @@ public class Raceway {
     public static LargeVechicleType The_Buzz_Wagon = new LargeVechicleType("Rufus Ruffcut and Sawtooth ");
     
 
+    /**
+     * prints out all current racers that are active with the current lap and distance
+     * @param thePlayer current player 
+     */
     public static void printContests(Engine thePlayer) {
         checklLargeState(The_Boudler_moblie);
         sleepFunction();
@@ -65,13 +69,21 @@ public class Raceway {
         sleepFunction();
     }
 
+    /**
+     * checks to see if the current state of the object is destoryed or not if so don't print out the racer
+     * @param theAI the object that will be checked
+     */
     public static void checkSmallState(SmallVechicleType theAI) {
         if (theAI.currentState == theAI.destoryedState) {
         } else {
             System.out.println(theAI.getNameOfDriver() + " has currently traveled" + theAI.distance + " and is on lap " + theAI.laps);
         }
     }
-
+    
+    /**
+     * checks to see if the current state of the object is destoryed or not if so don't print out the racer
+     * @param theAI the object that will be checked
+     */
     public static void checkMidState(MidVechicleType theAI) {
         if (theAI.currentState == theAI.destoryedState) {
         } else {
@@ -79,6 +91,10 @@ public class Raceway {
         }
     }
 
+        /**
+     * checks to see if the current state of the object is destoryed or not if so don't print out the racer
+     * @param theAI the object that will be checked
+     */
     public static void checklLargeState(LargeVechicleType theAI) {
         if (theAI.currentState == theAI.destoryedState) {
         } else {
@@ -86,6 +102,10 @@ public class Raceway {
         }
     }
 
+    /**
+     * sets the value of each of the racers powers
+     * @param thePlayer current player object
+     */
     public static void setpower(Engine thePlayer) {
         The_Boudler_moblie.setPower("The Boulder moblie rocks and rolls into action");
         Penelope_Pitstop.setPower("Stops by the pits to boost and stops play mrs nice girl");
@@ -101,6 +121,10 @@ public class Raceway {
     }
     
 
+    /**
+     * function that enters the loop each loop it will check if the win condtions have been met while not true it will loop though each of the funcitons
+     * @param thePlayer 
+     */
     public static void startRace(Engine thePlayer) {
         thePlayer.display();
         setpower(thePlayer);
@@ -113,6 +137,10 @@ public class Raceway {
         }
     }
 
+    /**
+     * allow the user to select which type of weapon that will be used during the race
+     * @param thePlayer player object
+     */
     public static void getWeaponType(Engine thePlayer) {
         while (!"yes".equals(correct)) {
             System.out.println("Which type of Weapon would you like. will you choose? Please note the bigger the boost the more you will weigh and you will be slower the more weight you have.you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
@@ -171,6 +199,10 @@ public class Raceway {
         }
     }
 
+        /**
+     * allow the user to select which type of booster that will be used during the race
+     * @param thePlayer player object
+     */
     public static void getBoosterType(Engine thePlayer) {
         while (!"yes".equals(correct)) {
             System.out.println("Which type of boost would you like. Please note the bigger the boost the more you will weigh and you will be slower the more weight you have. you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
@@ -232,6 +264,9 @@ public class Raceway {
 
     }
 
+        /**
+     * allow the user to select which type of vechicle that will be used during the race
+     */
     public static void getPlayerVechicle() {
         //loop that while the string correct doesn't equal yes it will ask the user what type of vechical they would like to choose
         while (!"yes".equals(correct)) {
@@ -286,6 +321,10 @@ public class Raceway {
 
     }
 
+    /**
+     * function that acts as a player turn, gives player the abillity to select what action they would like by using rng and input compearion using condionals 
+     * @param thePlayer 
+     */
     public static void drive(Engine thePlayer) {
         correct = "no";
         while (!"yes".equals(correct)) {
@@ -415,6 +454,9 @@ public class Raceway {
         }
     }
 
+    /**
+     * funciton that pauses excution to allow user to read text better
+     */
     public static void sleepFunction() {
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -423,6 +465,11 @@ public class Raceway {
         }
     }
 
+    /**
+     * allows the large vechicles to drive/shoot/boost or get powerups
+     * @param theAI the largevehcile type object 
+     * @param thePlayer the current player object
+     */
     public static void aiTurnLarge(LargeVechicleType theAI, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 6;
@@ -473,6 +520,11 @@ public class Raceway {
         }
     }
 
+        /**
+     * allows the mid vechicles to drive/shoot/boost or get powerups
+     * @param theAI the largevehcile type object 
+     * @param thePlayer the current player object
+     */
     public static void aiTurnMid(MidVechicleType theAI, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 6;
@@ -522,6 +574,11 @@ public class Raceway {
         }
     }
 
+        /**
+     * allows the small vechicles to drive/shoot/boost or get powerups
+     * @param theAI the largevehcile type object 
+     * @param thePlayer the current player object
+     */
     public static void aiTurnSmall(SmallVechicleType theAI, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 6;
@@ -571,6 +628,11 @@ public class Raceway {
         }
     }
 
+    /**
+     * function that uses a random number generator to select which target to shoot
+     * @param theAttacker the object which will shoot another
+     * @param thePlayer current player object
+     */
     public static void targetRandomSmall(SmallVechicleType theAttacker, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 12;
@@ -616,6 +678,11 @@ public class Raceway {
         }
     }
 
+        /**
+     * function that uses a random number generator to select which target to shoot
+     * @param theAttacker the object which will shoot another
+     * @param thePlayer current player object
+     */
     public static void targetRandomMid(MidVechicleType theAttacker, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 14;
@@ -661,6 +728,11 @@ public class Raceway {
         }
     }
 
+        /**
+     * function that uses a random number generator to select which target to shoot
+     * @param theAttacker the object which will shoot another
+     * @param thePlayer current player object
+     */
     public static void targetRandomLarge(LargeVechicleType theAttacker, Engine thePlayer) {
         Random rand = new Random();
         int upperbound = 16;
@@ -706,6 +778,10 @@ public class Raceway {
         }
     }
 
+    /**
+     * checks all objects distance count if higher than 100 a lap is added
+     * @param thePlayer current player object
+     */
     public static void lapCheck(Engine thePlayer) {
         if (thePlayer.distance >= 100) {
             thePlayer.laps = thePlayer.laps + 1;
@@ -754,6 +830,10 @@ public class Raceway {
 
     }
 
+    /**
+     * checks all objects if laps equal 3 any objects laps equal 3 their win function will be ran
+     * @param thePlayer player object 
+     */
     public static void finalLapCheck(Engine thePlayer) {
         if (thePlayer.laps >= 3) {
             playerWin(thePlayer);
@@ -790,6 +870,10 @@ public class Raceway {
         }
     }
 
+    /**
+     * if player laps = 3 this end function will run
+     * @param thePlayer current player object
+     */
     public static void playerWin(Engine thePlayer) {
         System.out.println("Dispite being a new racer you still mange to beat everyone else. The player had a car with a speed of " + thePlayer.getSpeed());
         sleepFunction();
@@ -826,6 +910,11 @@ public class Raceway {
 
     }
 
+    /**
+     * if ais laps = 3 this function will run to tell the player that they have lost and gives the option to play agian
+     * @param theAI object that won
+     * @param thePlayer current player object
+     */
     public static void largeAIWin(LargeVechicleType theAI, Engine thePlayer) {
         System.out.println("todays winner is " + theAI.getNameOfDriver() + " dispite being a large vechicle their vechicle had a speed " + theAI.getSpeed() + " I guess though it weighed " + theAI.getWeight() + " that didn't hold them back. Congrats " + theAI.getNameOfDriver());
         sleepFunction();
@@ -833,6 +922,11 @@ public class Raceway {
         winCon = true;
     }
 
+        /**
+     * if ais laps = 3 this function will run to tell the player that they have lost and gives the option to play agian
+     * @param theAI object that won
+     * @param thePlayer current player object
+     */
     public static void midAIWin(MidVechicleType theAI, Engine thePlayer) {
         System.out.println("todays winner is " + theAI.getNameOfDriver() + " I guess having states balanced all around payed off today they had a speed of " + theAI.getSpeed() + " and weight " + theAI.getWeight() + " which had a impact on todays results. Congrats " + theAI.getNameOfDriver());
         sleepFunction();
@@ -840,6 +934,11 @@ public class Raceway {
         winCon = true;
     }
 
+        /**
+     * if ais laps = 3 this function will run to tell the player that they have lost and gives the option to play agian
+     * @param theAI object that won
+     * @param thePlayer current player object
+     */
     public static void smallAIWin(SmallVechicleType theAI, Engine thePlayer) {
         System.out.println("todays winner is " + theAI.getNameOfDriver() + " dispite being a large vechicle their vechicle had a speed " + theAI.getSpeed() + " I guess though it weighed " + theAI.getWeight() + " that didn't hold them back. Congrats " + theAI.getNameOfDriver());
         sleepFunction();
@@ -847,11 +946,18 @@ public class Raceway {
         winCon = true;
     }
 
+    /**
+     * ends game if user doesn't want to play again
+     */
     public static void gameOver() {
         System.out.println("okay thanks for racing and we hope to see you agian");
         winCon = true;
     }
 
+    /**
+     * resets stats if player plays again
+     * @param thePlayer player object
+     */
     public static void resetGame(Engine thePlayer) {
         thePlayer.laps = 0;
         thePlayer.distance = 0;
@@ -889,6 +995,10 @@ public class Raceway {
         winCon = false;
     }
 
+           /**
+     this function will run to tell the player that they have lost and gives the option to play agian
+     * @param thePlayer current player object
+     */
     public static void lose(Engine thePlayer) {
         System.out.println("Unfornaly you lost todays race would you like to try again?");
         correct = "no";

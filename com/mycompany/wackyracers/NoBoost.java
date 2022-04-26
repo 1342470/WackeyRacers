@@ -12,6 +12,10 @@ package com.mycompany.wackyracers;
 public class NoBoost implements BoostType {
 
 
+    /**
+     * allows boost type to use the boost function
+     * @param theTarget 
+     */
     @Override
     public void boost(Engine theTarget) {
         System.out.println("you can't boost as you don't have a booster equiped");

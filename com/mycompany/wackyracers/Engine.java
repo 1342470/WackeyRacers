@@ -135,10 +135,18 @@ public abstract class Engine {
         this.distance = distance;
     }
 
+    /**
+     * gets the number of laps of object
+     * @return int of current objects laps
+     */
     public int getLaps() {
         return laps;
     }
 
+    /**
+     * allows new value of laps to be set 
+     * @param laps new number of laps
+     */
     public void setLaps(int laps) {
         this.laps = laps;
     }

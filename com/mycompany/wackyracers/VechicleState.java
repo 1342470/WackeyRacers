@@ -10,8 +10,25 @@ package com.mycompany.wackyracers;
  * @author kylej
  */
 public interface VechicleState {
- 
-	public void attack(Engine theTarget);
-	public int getSpeed();
-        public void boost(Engine theEngine);
+
+    /**
+     * allows objects to attack another
+     *
+     * @param theTarget target of attack
+     */
+    public void attack(Engine theTarget);
+
+    /**
+     * get speed from state as well getting total speed by from weight
+     *
+     * @return the value of speed
+     */
+    public int getSpeed();
+
+    /**
+     * uses boost to extend distance if uses are higher than 1
+     *
+     * @param theEngine target of boost
+     */
+    public void boost(Engine theEngine);
 }
