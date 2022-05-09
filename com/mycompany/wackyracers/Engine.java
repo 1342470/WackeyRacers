@@ -42,6 +42,55 @@ public abstract class Engine {
     }
 
     /**
+     * gets the current state of the engine
+     * @return current state
+     */
+    public VechicleState getState() {
+        return currentState;
+    }
+
+    /**
+     * allows the state to be changed to another new state 
+     * @param newState value of the new state that will be set
+     * @return new state as the value of the new state
+     */
+    public VechicleState setState(VechicleState newState) {
+        return this.currentState = newState;
+    }
+
+    /**
+     * get the destoryed state
+     * @return the engines destoryed state
+     */
+    public VechicleState getdestoryedState() {
+        return destoryedState;
+    }
+
+        /**
+     * get the powered state
+     * @return the engines powered state
+     */
+    public VechicleState getpoweredState() {
+        return poweredState;
+    }
+
+    /**
+     * get the broken state
+     * @return the engines broken state
+     */
+    public VechicleState getbrokenDownState() {
+        return brokenDownState;
+    }
+
+    /**
+     * get the normal state
+     * @return the engines normal state
+     */    
+    public VechicleState getnormalState() {
+        return normalState;
+    }
+    
+    /**
      * sets the type of booster that will be used during the race this could be
      * either small,mid or large
      *

@@ -22,19 +22,21 @@ public class LargeWeapon implements VechicleWeapon {
     public void attack(Engine theTarget) {
         if (this.ammo >= 1) {
             theTarget.health -= 50;
-            System.out.println("you fire at the target you now have " + this.ammo + " shots left");
             this.ammo--;
-            if (theTarget.health <= 50) {
-                theTarget.currentState = theTarget.brokenDownState;
-                System.out.println("owch thats got to hurt the damage to the vechicle has impacted the racers engine");
-            }else if (theTarget.health <= 0) {
-                theTarget.currentState = theTarget.destoryedState;
+            System.out.println("you fire at the target you now have " + this.ammo + " shots left");
+            
+            if (theTarget.health <= 0) {
+                theTarget.setState(theTarget.getdestoryedState());
                 System.out.println("a racer has been eliminated");
+            }else if (theTarget.health <=50){
+                theTarget.setState(theTarget.getbrokenDownState());
+                System.out.println("the shot has highly damaged the enginge its clear to see that the engine isn't preforming as well now");
             }
         } else {
             System.out.println("you cannot fire your weapon as you are out of ammo");
         }
     }
+    
 
     public int getAmmo() {
         return ammo;

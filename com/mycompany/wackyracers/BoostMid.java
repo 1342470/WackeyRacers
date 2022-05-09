@@ -20,7 +20,7 @@ public class BoostMid implements BoostType {
      */
     public void boost(Engine theTarget) {
         if (this.uses >= 1) {
-            theTarget.distance += 5;
+            theTarget.distance += 15;
             setUses(-1);
         } else {
             System.out.println("the boost failed as the booster fuel is empty");

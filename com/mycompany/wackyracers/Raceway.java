@@ -143,22 +143,23 @@ public class Raceway {
      */
     public static void getWeaponType(Engine thePlayer) {
         while (!"yes".equals(correct)) {
-            System.out.println("Which type of Weapon would you like. will you choose? Please note the bigger the boost the more you will weigh and you will be slower the more weight you have.you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
+            System.out.println("Which type of Weapon would you like. will you choose? enter 1 for large, 2 for mid or 3 for small or 4 for non ");
+            sleepFunction();
+            System.out.println("Please note the bigger the boost the more you will weigh and you will be slower the more weight you have.you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
             String vechicle = theName.nextLine();
 
-            if ("large".equals(vechicle) || "Large".equals(vechicle)) {
+            if ("1".equals(vechicle)) {
                 System.out.println("so you would like the Large Weapon, It has high damage but at the cost of only having one shot make it count: Type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
                 if ("yes".equals(theReply) || "Yes".equals(theReply)) {
                     thePlayer.vechicleWeapon = new LargeWeapon();
-                    //testRaceWay(thePlayer);
                     startRace(thePlayer);
                     correct = "yes";
                 } else {
                     correct = "no";
                 }
-            } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
+            } else if ("2".equals(vechicle)) {
                 System.out.println("so you would like the mid Weapon,Balanced stats across the board: Type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -169,7 +170,7 @@ public class Raceway {
                 } else {
                     correct = "no";
                 }
-            } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
+            } else if ("3".equals(vechicle)) {
                 System.out.println("so you would like the small Weapon, it has low fire power but a high ammo count: Type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -180,7 +181,7 @@ public class Raceway {
                 } else {
                     correct = "no";
                 }
-            } else if ("non".equals(vechicle) || "no".equals(vechicle)) {
+            } else if ("4".equals(vechicle)) {
                 System.out.println("so you would like the no weapon, you may not be able to shoot however as the lack of attack is met with a lower weight leading to a overall higher speed: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -205,10 +206,10 @@ public class Raceway {
      */
     public static void getBoosterType(Engine thePlayer) {
         while (!"yes".equals(correct)) {
-            System.out.println("Which type of boost would you like. Please note the bigger the boost the more you will weigh and you will be slower the more weight you have. you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
+            System.out.println("Which type of boost would you like. Enter 1 for large, 2 for mid and 3 for small or 4 for non Please note the bigger the boost the more you will weigh and you will be slower the more weight you have. you can even choose to not have one by typing 'non' or 'no' if you want to limit your weight");
             String vechicle = theName.nextLine();
 
-            if ("large".equals(vechicle) || "Large".equals(vechicle)) {
+            if ("1".equals(vechicle)) {
                 System.out.println("so you would like the Large booster, low boosters but high distance in one go: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -220,7 +221,7 @@ public class Raceway {
                 } else {
                     correct = "no";
                 }
-            } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
+            } else if ("2".equals(vechicle)) {
                 System.out.println("so you would like the mid booster, balanced amount of boost and uses: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -232,7 +233,7 @@ public class Raceway {
                 } else {
                     correct = "no";
                 }
-            } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
+            } else if ("3".equals(vechicle)) {
                 System.out.println("so you would like the small booster,low distance but high amounts of uses: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -244,7 +245,7 @@ public class Raceway {
                 } else {
                     correct = "no";
                 }
-            } else if ("non".equals(vechicle) || "no".equals(vechicle)) {
+            } else if ("4".equals(vechicle)) {
                 System.out.println("so you would like the no booster, you may not be able to boost however as the lack of booster and fuel onboard means lower weight leading to a overall higher speed: type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -270,11 +271,11 @@ public class Raceway {
     public static void getPlayerVechicle() {
         //loop that while the string correct doesn't equal yes it will ask the user what type of vechical they would like to choose
         while (!"yes".equals(correct)) {
-            System.out.println("Which type of vechicle would you like. Large vechicles have less ammo but pack a punch and have acess to larger boosters however due to the extra weight they arn't able to go as fast, secondly is the mid tier which has the most balanced set of stats, finally their is the small vechicle due to is size it is the fastest of the lot however its boost isn't as large and though its amount of ammo is carrys is large the damage is deals isn't great. so which will you choose?");
+            System.out.println("Which type of vechicle would you like. type 1 for Large due to the extra weight they arn't able to go as fast but are stonger, 2 for the mid tier which has the most balanced set of stats, finally 3 for the small vechicle due to is size it is the fastest but isn't the stongest. so which will you choose?");
             //get user input
             String vechicle = theName.nextLine();
             //if string matches ask user again if this is what they want if true create new LargeVeichalType object and move onto the next section 
-            if ("large".equals(vechicle) || "Large".equals(vechicle)) {
+            if ("1".equals(vechicle)) {
                 System.out.println("so you would like the Large vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -287,7 +288,7 @@ public class Raceway {
                     correct = "no";
                 }
                 //if string matches ask user again if this is what they want if true create new MidVeichalType object and move onto the next section 
-            } else if ("mid".equals(vechicle) || "Mid".equals(vechicle)) {
+            } else if ("2".equals(vechicle)) {
                 System.out.println("so you would like the mid vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -300,7 +301,7 @@ public class Raceway {
                     correct = "no";
                 }
                 //if string matches ask user again if this is what they want if true create new smallVeichalType object and move onto the next section 
-            } else if ("small".equals(vechicle) || "Small".equals(vechicle)) {
+            } else if ("3".equals(vechicle)) {
                 System.out.println("so you would like the small vechicle, type yes or no?");
                 Scanner theResponse = new Scanner(System.in);
                 String theReply = theResponse.nextLine();
@@ -337,7 +338,7 @@ public class Raceway {
                 Random rand = new Random();
                 int upperbound = 3;
                 int int_random = rand.nextInt(upperbound);
-                if (int_random == 1 || int_random == 3) {
+                if (int_random == 1 || int_random == 3 || int_random==0) {
                     thePlayer.distance += thePlayer.getSpeed();
                     System.out.println("You put your foot on the gas and drive on");
                     Random rand2 = new Random();
@@ -363,7 +364,7 @@ public class Raceway {
                 Random rand = new Random();
                 int upperbound = 4;
                 int int_random = rand.nextInt(upperbound);
-                if (int_random == 1 || int_random == 3 || int_random == 4) {
+                if (int_random == 0 ||int_random == 1 || int_random == 3 || int_random == 4) {
                     thePlayer.boost();
                     System.out.println("you use your boost and speed ahead.");
                     correct = "yes";
@@ -373,43 +374,47 @@ public class Raceway {
                 }
             } else if ("shoot".equals(action) || "Shoot".equals(action)) {
                 while (!"yes".equals(shotTarget)) {
-                System.out.println("who will you shoot you can shoot either 'The_Boudler_moblie', 'Penelope_Pitstop', 'The_Turbo_Terrific', 'The_Mean_Machine', 'The_Bullet_Proof_Bomb', 'The_Arkansas_Chuggabug', 'The_Creepy_Coupe', 'The_Convert_a_Car' or 'The_Army_surplus_Special' ?");
+                System.out.println("who will you shoot you can shoot either enter 1 for 'The_Boudler_moblie', 2 for 'Penelope_Pitstop', 3 for 'The_Turbo_Terrific', 4 for 'The_Mean_Machine', 5 for 'The_Bullet_Proof_Bomb', 6 for 'The_Arkansas_Chuggabug', 7 for 'The_Creepy_Coupe', 8 for 'The_Convert_a_Car', 9 for 'The_Army_surplus_Special' or 10 for 'The_Buzz_Wagon' ?");
                 String shot = theShot.nextLine();
-                if ("The_Boudler_moblie".equals(shot) || "The Boudler moblie".equals(shot) || "the boudler moblie".equals(shot)) {
+                if ("1".equals(shot)) {
                     System.out.println("you shoot the boulder moblie");
                     thePlayer.attack(The_Boudler_moblie);
                     shotTarget = "yes";
-                } else if ("Penelope_Pitstop".equals(shot) || "Penelope Pitstop".equals(shot) || "penelope pitstop".equals(shot)) {
+                } else if ("2".equals(shot)) {
                     System.out.println("you shoot Penelope_Pitstop");
                     thePlayer.attack(Penelope_Pitstop);
                     shotTarget = "yes";
-                } else if ("The_Turbo_Terrific".equals(shot) || "The Turbo Terrific".equals(shot) || "the turbo terrific".equals(shot)) {
+                } else if ("3".equals(shot)) {
                     System.out.println("you shoot The_Turbo_Terrific");
                     thePlayer.attack(The_Turbo_Terrific);
                     shotTarget = "yes";
-                } else if ("The_Mean_Machine".equals(shot) || "The Mean Machine".equals(shot) || "the mean machine".equals(shot)) {
+                } else if ("4".equals(shot)) {
                     System.out.println("you shoot The_Mean_Machine");
                     thePlayer.attack(The_Mean_Machine);
                     shotTarget = "yes";
-                } else if ("The_Bullet_Proof_Bomb".equals(shot) || "The Bullet Proof Bomb".equals(shot) || "the bullet proof bomb".equals(shot)) {
+                } else if ("5".equals(shot)) {
                     System.out.println("you shoot The_Bullet_Proof_Bomb");
                     thePlayer.attack(The_Bullet_Proof_Bomb);
                     shotTarget = "yes";
-                } else if ("The_Arkansas_Chuggabug".equals(shot) || "The Arkansas Chuggabug".equals(shot) || "the arkansas chuggabug".equals(shot)) {
+                } else if ("6".equals(shot)) {
                     System.out.println("you shoot The_Arkansas_Chuggabug");
                     thePlayer.attack(The_Arkansas_Chuggabug);
                     shotTarget = "yes";
-                } else if ("The_Creepy_Coupe".equals(shot) || "The Creepy Coupe".equals(shot) || "the creepy coupe".equals(shot)) {
+                } else if ("7".equals(shot)) {
                     System.out.println("you shoot The_Creepy_Coupe");
                     thePlayer.attack(The_Creepy_Coupe);
                     shotTarget = "yes";
-                } else if ("The_Convert_a_Car".equals(shot) || "The Convert a Car".equals(shot) || "the convert a car".equals(shot)) {
+                } else if ("8".equals(shot)) {
                     System.out.println("you shoot The_Convert_a_Car");
                     thePlayer.attack(The_Convert_a_Car);
                     shotTarget = "yes";
-                } else if ("The_Army_surplus_Special".equals(shot) || "The Army surplus Special".equals(shot) || "the army surplus special".equals(shot)) {
+                } else if ("9".equals(shot)) {
                     System.out.println("you shoot ");
                     thePlayer.attack(The_Army_surplus_Special);
+                    shotTarget = "yes";
+                }else if ("10".equals(shot)) {
+                    System.out.println("you shoot ");
+                    thePlayer.attack(The_Buzz_Wagon);
                     shotTarget = "yes";
                 } else {
                     System.out.println("unknown action");
@@ -1031,15 +1036,18 @@ public class Raceway {
     }
 
     public static void testRaceWay(Engine ThePlayer) {
+ThePlayer.vechicleWeapon.setAmmo(99);
 
-        ThePlayer.attack(The_Turbo_Terrific);
-        checkSmallState(The_Turbo_Terrific);
-        ThePlayer.vechicleWeapon.setAmmo(1);
-        ThePlayer.attack(The_Turbo_Terrific);
-        checkSmallState(The_Turbo_Terrific);
-
-        ThePlayer.attack(The_Turbo_Terrific);
-        checkSmallState(The_Turbo_Terrific);
+        printContests(ThePlayer);
+        ThePlayer.attack(Penelope_Pitstop);
+        System.out.println(Penelope_Pitstop.health);
+        printContests(ThePlayer);
+        ThePlayer.attack(Penelope_Pitstop);
+        System.out.println(Penelope_Pitstop.health);
+        printContests(ThePlayer);
+        ThePlayer.attack(Penelope_Pitstop);
+        System.out.println(Penelope_Pitstop.health);
+        System.out.println(Penelope_Pitstop .currentState);
     }
 
     public static void main(String[] args) {

@@ -20,7 +20,7 @@ public class BoostSmall implements BoostType {
      */
     public void boost(Engine theTarget) {
         if (this.uses >= 1) {
-            theTarget.distance += 2;
+            theTarget.distance += 8;
             setUses(-1);
         } else {
             System.out.println("the boost failed as the booster fuel is empty");
